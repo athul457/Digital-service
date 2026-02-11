@@ -1,0 +1,48 @@
+import Contact from '../components/Contact';
+import Particles from '../components/Particles';
+import { motion } from 'framer-motion';
+
+const ContactPage = () => {
+  return (
+    <div className="pt-16 mt-16 bg-white">
+       <section className="relative text-gray-900 py-20 text-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+             <Particles
+                particleColors={['#3b82f6', '#8b5cf6', '#e2e8f0']}
+                particleCount={100}
+                particleSpread={10}
+                speed={0.1}
+                particleBaseSize={100}
+                moveParticlesOnHover={true}
+                alphaParticles={true}
+                disableRotation={false}
+            />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-100 rounded-full blur-[100px] opacity-50 -z-10"></div>
+
+        <motion.div 
+            className="max-w-7xl mx-auto px-4 relative z-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+        >
+            <span className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-sm border border-blue-100 mb-6 inline-block">
+                Get in Touch
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900">
+                Let's Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Conversation</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Have a project in mind or just want to say hi? We'd love to hear from you.
+            </p>
+        </motion.div>
+      </section>
+
+      <div className="-mt-10 relative z-20">
+         <Contact />
+      </div>
+    </div>
+  );
+};
+
+export default ContactPage;
