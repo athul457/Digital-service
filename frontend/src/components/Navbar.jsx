@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code, ChevronRight } from 'lucide-react';
 
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -39,21 +40,17 @@ const Navbar = () => {
         className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${
             scrolled 
             ? 'bg-white/80 backdrop-blur-xl border-gray-200 shadow-lg' 
-            : 'bg-transparent border-transparent py-4'
+            : 'bg-white/5 backdrop-blur-md border-white/10 py-4'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           
+
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center group">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-xl mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/20">
-                <Code className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
-                Web Service
-              </span>
+              <img src="/favicon.svg" alt="WebBloom Logo" className="h-16 w-auto group-hover:scale-105 transition-transform duration-300" /><span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-dancing ml-2">WebBloom</span>
             </Link>
           </div>
 

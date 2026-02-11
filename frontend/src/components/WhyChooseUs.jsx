@@ -57,7 +57,7 @@ const WhyChooseUs = () => {
           >
             <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-bold tracking-wider uppercase text-sm border border-blue-200">Why Us?</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 mt-4 tracking-tight text-gray-900 leading-tight">
-                Why Leading Brands Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Web service</span>
+                Why leading brands choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">US</span>
             </h2>
             <p className="text-xl text-gray-600 mb-12 leading-relaxed">
               We combine creativity with technical expertise to deliver digital solutions that stand out. Here is why businesses trust us.

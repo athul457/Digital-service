@@ -1,4 +1,4 @@
-import { Code, Database, Briefcase } from 'lucide-react';
+import { Code, Database, Briefcase, Palette } from 'lucide-react';
 
 export const services = [
   {
@@ -32,6 +32,17 @@ export const services = [
       "Detective/Agency Services",
       "Clinic Management Systems",
       "Job Portals"
+    ]
+  },
+  {
+    icon: Palette,
+    title: "UI/UX Design",
+    features: [
+        "User Research & Personas",
+        "Wireframing & Prototyping",
+        "Mobile App Design",
+        "Web Interface Design",
+        "Design Systems"
     ]
   }
 ];

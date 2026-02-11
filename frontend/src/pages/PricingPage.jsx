@@ -3,11 +3,17 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import CTA from '../components/CTA';
 import Particles from '../components/Particles';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const PricingPage = () => {
   return (
     <div className="pt-16 mt-16 bg-white">
-       <section className="relative text-gray-900 py-24 text-center overflow-hidden">
+      <SEO 
+        title="Pricing" 
+        description="Transparent pricing packages for every business size. No hidden fees." 
+        keywords="web design pricing, development packages, affordable websites"
+      />
+      <section className="relative text-gray-900 py-24 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
              <Particles
                 particleColors={['#3b82f6', '#8b5cf6', '#e2e8f0']}

@@ -5,10 +5,16 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import Portfolio from '../components/Portfolio';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
 
 const Home = () => {
   return (
-    <>
+    <main className="overflow-x-hidden">
+      <SEO 
+        title="Home" 
+        description="WebBloom - We build best websites and digital experiences for businesses." 
+        keywords="web design, digital agency, web development, SEO, marketing"
+      />
       <Hero />
       <Problem />
       <Services />
@@ -16,7 +22,7 @@ const Home = () => {
       <Portfolio />
       <Testimonials />
       <CTA />
-    </>
+    </main>
   );
 };
 

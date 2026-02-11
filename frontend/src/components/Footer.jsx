@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Code, Heart } from 'lucide-react';
 
+
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -8,13 +9,13 @@ const Footer = () => {
     <footer className="bg-gray-50 text-gray-900 pt-20 pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-gray-900 mb-6 group">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-500/20">
-                <Code className="h-6 w-6 text-white" />
-              </div>
-              <span className="tracking-tight">web service</span>
+              <img src="/favicon.svg" alt="WebBloom Logo" className="h-20 w-20 group-hover:scale-110 transition-transform duration-300" />
+              <span className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-dancing ml-2">WebBloom</span>
             </Link>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Helping businesses grow with custom digital solutions. From web development to digital marketing, we create experiences that convert.
@@ -82,12 +83,12 @@ const Footer = () => {
                     E-Commerce
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/services" className="text-gray-600 hover:text-blue-600 transition-colors flex items-center group">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     SEO & Marketing
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/services" className="text-gray-600 hover:text-blue-600 transition-colors flex items-center group">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
@@ -129,7 +130,7 @@ const Footer = () => {
                 <div className="bg-blue-100 p-2 rounded-lg mr-3 shrink-0">
                     <Mail className="h-5 w-5 text-blue-600" />
                 </div>
-                <span className="text-gray-600">hello@antigravity.com</span>
+                <span className="text-gray-600">hello@webbloom.com</span>
               </li>
             </ul>
           </div>
@@ -140,9 +141,9 @@ const Footer = () => {
             &copy; {currentYear} web service. Made with <Heart className="h-3 w-3 text-red-500 mx-1 fill-current" /> by your team.
           </p> */}
           <div className="flex space-x-8 mt-4 md:mt-0">
-            <a href="#" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Cookie Policy</a>
+            <Link to="/privacy-policy" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Terms of Service</Link>
+            <Link to="/cookie-policy" className="text-gray-500 hover:text-blue-600 text-sm transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

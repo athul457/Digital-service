@@ -3,10 +3,16 @@ import CTA from '../components/CTA';
 import Testimonials from '../components/Testimonials';
 import Particles from '../components/Particles';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ServicesPage = () => {
   return (
     <div className="pt-16 mt-16 bg-white">
+      <SEO 
+        title="Our Services" 
+        description="World-class web design, development, and SEO services tailored to your needs." 
+        keywords="web design services, seo services, app development, branding"
+      />
       <section className="relative text-gray-900 py-24 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
              <Particles

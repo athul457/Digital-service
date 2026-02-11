@@ -76,7 +76,8 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="py-24 bg-gray-50 relative overflow-hidden" id="portfolio">
+    <section className="py-12 bg-gray-50" id="portfolio">
+      <div className="max-w-[95%] mx-auto bg-white rounded-[3rem] py-24 relative overflow-hidden shadow-sm">
       {/* Background Glow */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl pointer-events-none opacity-50"></div>
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl pointer-events-none opacity-50"></div>
@@ -132,7 +133,7 @@ const Portfolio = () => {
           {portfolio.map((project) => (
             <div 
               key={project.id} 
-              className="min-w-[85vw] md:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1.33rem)] snap-center flex-shrink-0 group"
+              className="w-[380px] flex-shrink-0 snap-center group"
             >
               <div className="bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
                 <div className="relative overflow-hidden h-48 p-3 bg-gray-50">
@@ -196,6 +197,7 @@ const Portfolio = () => {
         <div className="text-center mt-8 md:hidden">
             <p className="text-sm text-gray-400 animate-pulse">Swipe to explore →</p>
         </div>
+      </div>
       </div>
     </section>
   );

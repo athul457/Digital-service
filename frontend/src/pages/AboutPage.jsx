@@ -4,6 +4,7 @@ import CTA from '../components/CTA';
 import Particles from '../components/Particles';
 import { motion } from 'framer-motion';
 import { Award, Users, Globe, TrendingUp } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const AboutPage = () => {
   const stats = [
@@ -15,6 +16,11 @@ const AboutPage = () => {
 
   return (
     <div className="pt-16">
+      <SEO 
+        title="About Us"
+        description="We are a team of passionate digital experts dedicated to your success."
+        keywords="about us, digital agency team, web developers, designers"
+      />
       <section className="relative bg-white text-gray-900 py-20 lg:py-32 overflow-hidden">
         {/* Particles Background */}
         <div className="absolute inset-0 z-0">
@@ -74,13 +80,13 @@ const AboutPage = () => {
                         <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
                         <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
                             <p>
-                                Founded in 2020, <span className="font-bold text-blue-600">WebAgency</span> started with a simple mission: to help small and medium-sized businesses navigate the complex digital landscape. We believe that every business deserves a high-quality online presence that drives real results.
+                                <span className="font-bold text-blue-600">WebBloom</span> started with a simple mission: to help businesses find their footing in a crowded digital world. We’ve always believed that a great online presence shouldn't be a luxury—it’s a necessity for any brand looking to truly grow.
                             </p>
                             <p>
-                                Over the years, we've grown from a small team of three to a full-service digital agency with experts in web development, design, SEO, and digital marketing.
+                                While our own official website is a recent launch, our team’s expertise is anything but new. We’ve spent years behind the scenes building high-performing web applications that are currently live and driving results for our partners across various industries.
                             </p>
                             <p>
-                                Our approach is collaborative and transparent. We work closely with our clients to understand their unique goals and challenges, delivering tailored solutions that exceed expectations.
+                                Our approach is built on transparency and real partnership. We don’t just deliver a project and disappear; we work closely with you to understand your specific challenges, ensuring every line of code and every design choice adds long-term value to your business.
                             </p>
                         </div>
                     </div>
@@ -88,7 +94,7 @@ const AboutPage = () => {
             </div>
 
             {/* Stats Section */}
-            <motion.div 
+            {/* <motion.div 
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +113,7 @@ const AboutPage = () => {
                         </div>
                     );
                 })}
-            </motion.div>
+            </motion.div> */}
         </div>
       </section>
       

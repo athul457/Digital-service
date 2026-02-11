@@ -22,6 +22,9 @@
   .font-playwrite {
     font-family: "Playwrite NZ Basic", cursive;
   }
+  .font-dancing {
+    font-family: "Dancing Script", cursive;
+  }
 }
 
 @layer utilities {

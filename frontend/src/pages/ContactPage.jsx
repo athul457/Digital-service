@@ -1,10 +1,16 @@
 import Contact from '../components/Contact';
 import Particles from '../components/Particles';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ContactPage = () => {
   return (
     <div className="pt-16 mt-16 bg-white">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with WebBloom. Let's start a conversation about your project." 
+        keywords="contact us, hire web designer, project inquiry, consultation"
+      />
        <section className="relative text-gray-900 py-20 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
              <Particles
