@@ -8,10 +8,10 @@ const ContactPage = () => {
     <div className="pt-16 mt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <SEO 
         title="Contact Us" 
-        description="Get in touch with WebBloom. Let's start a conversation about your project." 
+        description="Get in touch with BoolianLabs. Let's start a conversation about your project." 
         keywords="contact us, hire web designer, project inquiry, consultation"
       />
-       <section className="relative text-gray-900 dark:text-white py-20 text-center overflow-hidden transition-colors duration-300">
+       <section className="relative text-gray-900 dark:text-white py-12 md:py-16 text-center overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 z-0">
              <Particles
                 particleColors={['#3b82f6', '#8b5cf6', '#e2e8f0']}

@@ -1,8 +1,28 @@
 import { Clock, DollarSign, Layout, TrendingUp, Headphones, ArrowRight } from 'lucide-react';
 import Particles from './Particles';
 import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
 
 const WhyChooseUs = () => {
+    const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+    const scrollRef = useRef(null);
+
+    const handleScroll = () => {
+        if (scrollRef.current) {
+            const { scrollLeft, clientWidth } = scrollRef.current;
+            const index = Math.round(scrollLeft / clientWidth);
+            setActiveMobileIndex(index);
+        }
+    };
+
+    const scrollToSlide = (index) => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTo({
+                left: index * scrollRef.current.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+    };
   const reasons = [
     {
       icon: Clock,
@@ -53,7 +73,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="why-choose-us">
+    <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="why-choose-us">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 dark:bg-blue-900/20 rounded-full mix-blend-multiply filter blur-[120px] opacity-30 animate-blob"></div>
@@ -93,7 +113,54 @@ const WhyChooseUs = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 auto-rows-[minmax(180px,auto)]">
+        {/* Mobile Carousel (Visible < md) */}
+        <div className="md:hidden relative mb-12">
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-4 px-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {reasons.map((reason, index) => (
+              <div key={index} className="min-w-full snap-center px-1">
+                 <motion.div
+                  className={`relative h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-6 rounded-2xl border border-white/20 dark:border-gray-700/50 shadow-lg flex flex-col justify-between`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative z-10">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                          {reason.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                          {reason.description}
+                      </p>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center space-x-2 mt-4">
+            {reasons.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeMobileIndex === index 
+                    ? "w-8 bg-blue-600" 
+                    : "w-2 bg-gray-300 dark:bg-gray-700 hover:bg-blue-400"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid (Visible >= md) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 auto-rows-[minmax(180px,auto)]">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;
             return (
@@ -123,9 +190,9 @@ const WhyChooseUs = () => {
                 </div>
                 
                 {/* Subtle arrow that appears on hover */}
-                <div className="mt-8 relative z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                {/* <div className="mt-8 relative z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-blue-600 dark:text-blue-400 font-semibold flex items-center">
                     Learn more <ArrowRight className="w-4 h-4 ml-2" />
-                </div>
+                </div> */}
               </motion.div>
             );
           })}

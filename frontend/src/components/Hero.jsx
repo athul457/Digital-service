@@ -73,7 +73,7 @@ const TypingText = ({ text, className }) => {
 
 const Hero = () => {
   return (
-    <section className="relative bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-32 pb-16 lg:py-32 overflow-hidden transition-colors duration-300">
+    <section className="relative bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-48 pb-16 lg:py-32 overflow-hidden transition-colors duration-300">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[60px] md:blur-[80px] opacity-70 animate-blob" />
@@ -110,7 +110,7 @@ const Hero = () => {
           >
             <div className="inline-flex items-center px-3 py-1 rounded-full border border-green-100 dark:border-green-900 bg-green-50/50 dark:bg-green-900/30 backdrop-blur-sm mb-6 text-xs md:text-sm font-medium text-green-600 dark:text-green-400">
                 <span className="flex h-2 w-2 rounded-full bg-green-600 dark:bg-green-400 mr-2 animate-pulse"></span>
-                WebBloom
+                BoolianLabs
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight text-gray-900 dark:text-white">
@@ -128,7 +128,7 @@ const Hero = () => {
                 className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-green-500 text-white rounded-full font-bold text-base md:text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden hover:brightness-110 flex items-center justify-center sm:justify-start"
               >
                   <span className="relative z-10 flex items-center justify-center">
-                    Get Started <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
+                    Get a Quote <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
               </Link>
               <Link
@@ -141,7 +141,7 @@ const Hero = () => {
 
             {/* Trust Metrics */}
             <motion.div 
-                className="flex items-center justify-start space-x-4 md:space-x-8 border-t border-gray-100 dark:border-gray-800 pt-6 md:pt-8 transition-colors"
+                className="flex items-center justify-center lg:justify-start space-x-4 md:space-x-8 border-t border-gray-100 dark:border-gray-800 pt-6 md:pt-8 transition-colors"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -177,7 +177,7 @@ const Hero = () => {
 
           {/* Right Column: Glassmorphism Stats */}
           <motion.div 
-            className="flex-1 w-full max-w-lg lg:max-w-none perspective-1000"
+            className="hidden lg:block flex-1 w-full max-w-lg lg:max-w-none perspective-1000"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}

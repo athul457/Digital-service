@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code, ChevronRight, Sun, Moon, Loader2 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -11,6 +11,7 @@ const Navbar = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [isThemeChanging, setIsThemeChanging] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   const handleThemeToggle = () => {
     setIsThemeChanging(true);
@@ -63,8 +64,8 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center group">
-              <img src="/favicon.svg" alt="WebBloom Logo" className="h-16 w-auto group-hover:scale-105 transition-transform duration-300" />
-              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-dancing ml-2">WebBloom</span>
+              <img src="/favicon.svg" alt="BoolianLabs Logo" className="h-16 w-auto group-hover:scale-105 transition-transform duration-300" />
+              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent font-dancing ml-2">BoolianLabs</span>
             </Link>
           </div>
 
@@ -191,6 +192,12 @@ const Navbar = () => {
             </div>
           </div>
       </div>
+
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-green-500 origin-left z-50"
+        style={{ scaleX: scrollYProgress }}
+      />
     </nav>
   );
 };

@@ -13,9 +13,12 @@ import TermsOfService from './pages/TermsOfService';
 import BlogPage from './pages/BlogPage';
 import CookiePolicy from './pages/CookiePolicy';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

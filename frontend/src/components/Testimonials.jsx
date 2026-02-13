@@ -58,7 +58,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-12 md:py-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+    <section className="py-12 md:py-16 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Particles Background */}
       <div className="absolute inset-0 z-0">
         <Particles

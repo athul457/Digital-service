@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
                 1. Introduction
               </h2>
               <p>
-                Welcome to WebBloom ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+                Welcome to BoolianLabs ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
               </p>
             </section>
 
@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Contact Us</h2>
               <p>
-                If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:hello@webbloom.com" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">hello@webbloom.com</a>
+                If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:hello@boolianlabs.com" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">hello@boolianlabs.com</a>
               </p>
             </section>
           </div>

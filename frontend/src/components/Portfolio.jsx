@@ -145,7 +145,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="relative bg-white dark:bg-gray-900 text-gray-900 dark:text-white py-12 md:py-20 lg:py-32 overflow-hidden transition-colors duration-300" id="portfolio">
+    <section className="relative bg-white dark:bg-gray-900 text-gray-900 dark:text-white py-12 md:py-16 lg:py-20 overflow-hidden transition-colors duration-300" id="portfolio">
        {/* Dynamic Background */}
        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-200/40 dark:bg-blue-900/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[80px] opacity-70 animate-blob" />
@@ -258,10 +258,10 @@ const Portfolio = () => {
                     </p>
                   </div>
                   
-                  <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold group/link cursor-pointer">
+                  {/* <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold group/link cursor-pointer">
                     <span className="mr-2">View Case Study</span>
                     <ArrowRight className="h-4 w-4 transform group-hover/link:translate-x-1 transition-transform" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

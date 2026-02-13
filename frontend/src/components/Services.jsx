@@ -1,217 +1,222 @@
-import { useState, useRef, useEffect } from 'react';
-import { services } from '../data/servicesData';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Plus, Minus } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { services } from "../data/servicesData";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useState, useRef } from "react";
+
+// Internal Spotlight Card Component
+function SpotlightCard({ children, className = "" }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <div
+      className={`group relative border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden rounded-3xl ${className}`}
+      onMouseMove={handleMouseMove}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(37, 99, 235, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <div className="relative h-full">{children}</div>
+    </div>
+  );
+}
 
 const Services = () => {
-  const [showAll, setShowAll] = useState(false);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { 
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const displayedServices = showAll ? services : services.slice(0, 5);
-
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
   const scrollRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleScroll = () => {
     if (scrollRef.current) {
-        const scrollPosition = scrollRef.current.scrollLeft;
-        const width = scrollRef.current.offsetWidth;
-        const newIndex = Math.round(scrollPosition / width);
-        setActiveIndex(newIndex);
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const index = Math.round(scrollLeft / clientWidth);
+      setMobileActiveIndex(index);
     }
   };
 
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (container) {
-        container.addEventListener('scroll', handleScroll);
-        return () => container.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
-
-  const scrollToService = (index) => {
+  const scrollToSlide = (index) => {
     if (scrollRef.current) {
-        const width = scrollRef.current.offsetWidth;
-        scrollRef.current.scrollTo({
-            left: index * width,
-            behavior: 'smooth'
-        });
-        setActiveIndex(index);
+      scrollRef.current.scrollTo({
+        left: index * scrollRef.current.clientWidth,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <section className="py-12 md:py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden transition-colors duration-300" id="services">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]">
-        <div className="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
-      </div>
-      
-      {/* Decorative Blobs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 dark:bg-blue-900/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-green-100 dark:bg-green-900/20 rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-blob animation-delay-4000"></div>
+    <section className="py-16 md:py-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="services">
+      {/* Background Ambience - Matching Hero */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-200/20 dark:bg-green-900/10 rounded-full blur-[128px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center mb-10 md:mb-20 max-w-3xl mx-auto">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-semibold text-sm tracking-wide uppercase"
-            >
-                Our Expertise
-            </motion.div>
-            <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight leading-tight"
-            >
-                Digital Solutions for <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">Every Business Need</span>
-            </motion.h2>
-            <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
-            >
-                From custom websites to AI-driven marketing, we provide end-to-end services to help your brand grow in the digital landscape.
-            </motion.p>
+        {/* Header */}
+        <div className="text-center mb-20 max-w-3xl mx-auto">
+          <div className="inline-flex items-center px-3 py-1 rounded-full border border-green-100 dark:border-green-900 bg-green-50/50 dark:bg-green-900/20 backdrop-blur-sm mb-6">
+            <Sparkles className="w-4 h-4 text-green-600 dark:text-green-400 mr-2" />
+            <span className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wider font-roboto-condensed">World-Class Expertise</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 font-outfit tracking-tight">
+            Digital Solutions That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">Elevate Your Brand</span>
+          </h2>
+          
+          <p className="text-lg text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+            We blend creativity with technology to build digital experiences that are not just functional, but unforgettable.
+          </p>
         </div>
-        
-        {/* Services Grid */}
-        <div 
+
+        {/* ================= MOBILE CAROUSEL (Visible < md) ================= */}
+        <div className="md:hidden relative mb-12">
+          <div 
             ref={scrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 pb-8 pt-8 px-4 md:px-0 -mx-4 md:mx-0"
-        >
-          <AnimatePresence>
-            {displayedServices.map((service, index) => {
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-6 px-6"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.div 
-                  key={service.title} // Ensure unique key for animations
-                  className="flex-none w-full md:w-auto snap-center group relative bg-white dark:bg-gray-800 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 border border-gray-100/50 dark:border-gray-700/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] overflow-hidden h-full flex flex-col"
-                  variants={itemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="hidden"
-                  layout
-                >
-                  {/* Hover Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-green-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  <div className="relative z-10 flex-1 flex flex-col">
-                      {/* Icon Container */}
-                      <div className="mb-6 relative">
-                          <div className="w-14 h-14 bg-gray-50 dark:bg-gray-700 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-green-500 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-blue-500/30">
-                              <Icon className="h-7 w-7 text-gray-700 dark:text-gray-200 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
-                          </div>
-                      </div>
+                <div key={service.title} className="min-w-full snap-center px-6">
+                  <SpotlightCard className="h-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+                    <div className="p-6 h-full flex flex-col relative z-20">
                       
-                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      <div className="mb-4">
+                        {/* Icon removed for mobile as requested */}
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 font-outfit">
                           {service.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed flex-1">
-                          {service.description}
-                      </p>
-
-                      <div className="pt-6 border-t border-gray-100 dark:border-gray-700 group-hover:border-blue-100/50 transition-colors">
-                          <Link to="/contact" className="inline-flex items-center text-gray-900 dark:text-white font-semibold text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors group/link">
-                              Learn more 
-                              <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                          </Link>
+                        </h3>
                       </div>
-                  </div>
-                </motion.div>
+
+                      <div className="relative overflow-hidden transition-all duration-300 border-l-2 border-gray-100 dark:border-gray-800 pl-4">
+                        {service.subServices ? (
+                          <div className="space-y-3">
+                             <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans mb-3">
+                               {service.description}
+                             </p>
+                             <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-800">
+                                <p className="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">Features</p>
+                                {service.subServices.map((sub, i) => (
+                                  <div key={i} className="flex items-start">
+                                    <span className="w-1 h-1 rounded-full bg-green-500 mt-1.5 mr-2 flex-shrink-0"></span>
+                                    <p className="text-xs text-gray-600 dark:text-gray-400">{sub.title}</p>
+                                  </div>
+                                ))}
+                             </div>
+                          </div>
+                        ) : (
+                          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+                            {service.description}
+                          </p>
+                        )}
+                      </div>
+
+                    </div>
+                  </SpotlightCard>
+                </div>
               );
             })}
-          </AnimatePresence>
+          </div>
 
-          <motion.div 
-            onClick={() => setShowAll(!showAll)}
-            className="flex-none w-full md:w-auto snap-center group relative bg-white dark:bg-gray-800 rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 border border-dashed border-gray-300 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 shadow-sm hover:shadow-md cursor-pointer h-full flex flex-col items-center justify-center min-h-[300px]"
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            layout
-          >
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-colors ${showAll ? 'bg-red-50 dark:bg-red-900/20 group-hover:bg-red-100 dark:group-hover:bg-red-900/40' : 'bg-blue-50 dark:bg-blue-900/20 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40'}`}>
-                {showAll ? (
-                    <Minus className={`h-8 w-8 ${showAll ? 'text-red-500 dark:text-red-400' : 'text-blue-600 dark:text-blue-400'}`} />
-                ) : (
-                    <Plus className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                )}
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{showAll ? 'Show Less' : 'View More'}</h3>
-            <p className="text-gray-500 dark:text-gray-400 text-center text-sm">
-                {showAll ? 'Collapse services list' : 'Discover all our premium services'}
-            </p>
-          </motion.div>
-
-        </div>
-
-        {/* Pagination Dots for Mobile */}
-        <div className="flex justify-center mt-6 md:hidden space-x-2">
-            {displayedServices.map((_, index) => (
-                <button
-                    key={index}
-                    onClick={() => scrollToService(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                        activeIndex === index 
-                        ? 'w-8 bg-blue-600 dark:bg-blue-400' 
-                        : 'w-2 bg-gray-300 dark:bg-gray-700 hover:bg-blue-400 dark:hover:bg-blue-600'
-                    }`}
-                    aria-label={`Go to service ${index + 1}`}
-                />
+          {/* Dots Indicator */}
+          <div className="flex justify-center space-x-2 mt-6">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  mobileActiveIndex === index 
+                    ? "w-8 bg-green-500" 
+                    : "w-2 bg-gray-300 dark:bg-gray-700 hover:bg-green-300"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
+          </div>
         </div>
 
-        {/* View More Button */}
-        {!showAll && (
-            <div className="mt-12 text-center md:hidden">
-                <button
-                    onClick={() => setShowAll(true)}
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-400 transition-colors duration-300"
-                >
-                    View All Services
-                    <ArrowRight className="ml-3 -mr-1 h-5 w-5" aria-hidden="true" />
-                </button>
-            </div>
-        )}
+        {/* Creative Grid (Desktop Only) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+              <SpotlightCard key={service.title} className="h-full">
+                <div className="p-8 h-full flex flex-col relative z-20">
+                  
+                  {/* Icon & Title */}
+                  <div className="mb-6">
+                    <div className="w-14 h-14 bg-gray-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-100 dark:border-gray-700 group-hover:border-green-500/30">
+                      <Icon className="w-7 h-7 text-gray-600 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors" strokeWidth={1.5} />
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 font-outfit group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  {/* Content Container with Expand on Hover */}
+                  <div className="relative overflow-hidden transition-all duration-500 ease-in-out border-l-2 border-gray-100 dark:border-gray-800 pl-4 group-hover:border-green-500 group-hover:pl-4">
+                    
+                    {service.subServices ? (
+                      <div className="space-y-4">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 font-roboto-condensed uppercase tracking-wider mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 absolute group-hover:relative -top-4 group-hover:top-0">
+                          Included Services
+                        </p>
+                        
+                         {/* Default Description (Shows when not hovered) */}
+                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-sans group-hover:hidden transition-all duration-300">
+                           {service.description}
+                         </p>
+
+                        {/* Sub-services (Shows on hover) */}
+                        <div className="hidden group-hover:block space-y-3 animate-fadeIn">
+                          {service.subServices.map((sub, i) => (
+                            <div key={i} className="group/item">
+                              <h4 className="text-sm font-semibold text-gray-900 dark:text-white flex items-center">
+                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 opacity-0 group-hover/item:opacity-100 transition-opacity"></span>
+                                {sub.title}
+                              </h4>
+                              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 ml-3.5 leading-relaxed">
+                                {sub.description}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+                        {service.description}
+                      </p>
+                    )}
+                  </div>
+
+                </div>
+              </SpotlightCard>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
 };
 
 export default Services;
+
+

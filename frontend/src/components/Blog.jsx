@@ -37,7 +37,7 @@ const Blog = () => {
     };
 
     return (
-        <section className="py-12 md:py-24 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="blog">
+        <section className="py-12 md:py-16 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="blog">
              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
