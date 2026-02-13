@@ -6,13 +6,13 @@ import SEO from '../components/SEO';
 
 const PortfolioPage = () => {
   return (
-    <div className="pt-16 mt-16 bg-white">
+    <div className="pt-16 mt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <SEO 
         title="Our Portfolio" 
         description="See our recent projects. We help brands stand out with exceptional digital experiences." 
         keywords="portfolio, web design projects, case studies, success stories"
       />
-      <section className="relative text-gray-900 py-24 text-center overflow-hidden">
+      <section className="relative text-gray-900 dark:text-white py-24 text-center overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 z-0">
              <Particles
                 particleColors={['#3b82f6', '#8b5cf6', '#e2e8f0']}
@@ -32,13 +32,13 @@ const PortfolioPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
         >
-             <span className="bg-green-50 text-green-600 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-sm border border-green-100 mb-6 inline-block">
+             <span className="bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-300 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-sm border border-green-100 dark:border-green-800 mb-6 inline-block">
                 Our Work
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">
                 Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Projects</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                 Explore a selection of our recent work. We help brands stand out and grow through exceptional digital experiences.
             </p>
         </motion.div>

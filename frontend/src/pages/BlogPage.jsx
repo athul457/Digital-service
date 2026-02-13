@@ -7,13 +7,13 @@ import SEO from '../components/SEO';
 
 const BlogPage = () => {
   return (
-    <div className="pt-16 mt-16 bg-white">
+    <div className="pt-16 mt-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <SEO 
         title="Our Blog" 
         description="Stay updated with the latest trends in technology, design, and digital marketing." 
         keywords="blog, digital marketing insights, web design trends, tech news"
       />
-      <section className="relative text-gray-900 py-24 text-center overflow-hidden">
+      <section className="relative text-gray-900 dark:text-white py-24 text-center overflow-hidden transition-colors duration-300">
         <div className="absolute inset-0 z-0">
              <Particles
                 particleColors={['#8b5cf6', '#ec4899', '#e2e8f0']}
@@ -26,8 +26,8 @@ const BlogPage = () => {
                 disableRotation={false}
             />
         </div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-100 rounded-full blur-[100px] opacity-40 -z-10"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-100 rounded-full blur-[100px] opacity-40 -z-10"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-100 dark:bg-purple-900/20 rounded-full blur-[100px] opacity-40 -z-10"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-100 dark:bg-pink-900/20 rounded-full blur-[100px] opacity-40 -z-10"></div>
 
         <motion.div 
             className="max-w-7xl mx-auto px-4 relative z-10"
@@ -35,13 +35,13 @@ const BlogPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
         >
-             <span className="bg-purple-50 text-purple-600 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-sm border border-purple-100 mb-6 inline-block">
+             <span className="bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-sm border border-purple-100 dark:border-purple-800 mb-6 inline-block">
                 Latest Insights
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Blog</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                 Expert articles, industry news, and tips to help your business grow in the digital age.
             </p>
         </motion.div>

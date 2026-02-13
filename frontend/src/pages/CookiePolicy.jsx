@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 
 const CookiePolicy = () => {
   return (
-    <div className="pt-24 pb-16 bg-white min-h-screen mt-16">
+    <div className="pt-24 pb-16 bg-white dark:bg-gray-900 min-h-screen mt-16 transition-colors duration-300">
       <SEO 
         title="Cookie Policy" 
         description="Information about how we use cookies to improve your experience on our website." 
@@ -18,14 +18,14 @@ const CookiePolicy = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Cookie Policy</h1>
-            <p className="text-lg text-gray-600">Last updated: February 11, 2026</p>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Cookie Policy</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Last updated: February 11, 2026</p>
           </div>
 
-          <div className="prose prose-lg max-w-none text-gray-600 space-y-8">
+          <div className="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-8">
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Cookie className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Cookie className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 1. What Are Cookies
               </h2>
               <p>
@@ -34,8 +34,8 @@ const CookiePolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Info className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Info className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 2. How We Use Cookies
               </h2>
               <p>
@@ -47,26 +47,26 @@ const CookiePolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Types of Cookies We Use</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">3. Types of Cookies We Use</h2>
               <div className="space-y-4">
-                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Essential Cookies</h3>
+                <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors">
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">Essential Cookies</h3>
                   <p>These are strictly necessary for the website to function properly. They ensure basic functionalities and security features of the website, anonymously.</p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Functional Cookies</h3>
+                <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors">
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">Functional Cookies</h3>
                   <p>These help to perform certain functionalities like sharing the content of the website on social media platforms, collect feedbacks, and other third-party features.</p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
-                  <h3 className="font-bold text-lg text-gray-900 mb-2">Analytics Cookies</h3>
+                <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors">
+                  <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">Analytics Cookies</h3>
                   <p>These provide information on how the visitor interacts with the website. It helps to understand metrics such as number of visitors, bounce rate, traffic source, etc.</p>
                 </div>
               </div>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Settings className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Settings className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 4. Managing Cookies
               </h2>
               <p>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   p {
     font-family: "Roboto Mono", "Outfit", monospace;
@@ -7,6 +9,23 @@
   
   h1, h2, h3, h4, h5, h6 {
     font-family: "Inter", "Outfit", sans-serif;
+  }
+
+  :root {
+    color-scheme: light dark;
+  }
+
+  html, body {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background-color: #111827; /* gray-900 */
+    color: #f3f4f6; /* gray-100 */
   }
   
   /* Optional: Add utilities for the other fonts just in case */

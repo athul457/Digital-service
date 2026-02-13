@@ -37,7 +37,7 @@ const BackToTop = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40 hover:-translate-y-1 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-gradient-to-r from-blue-600 to-green-500 text-white shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden hover:brightness-110 focus:outline-none"
           aria-label="Back to Top"
         >
           <ArrowUp className="w-6 h-6" />

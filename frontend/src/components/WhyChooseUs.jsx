@@ -1,4 +1,4 @@
-import { Clock, DollarSign, Layout, TrendingUp, Headphones } from 'lucide-react';
+import { Clock, DollarSign, Layout, TrendingUp, Headphones, ArrowRight } from 'lucide-react';
 import Particles from './Particles';
 import { motion } from 'framer-motion';
 
@@ -7,120 +7,128 @@ const WhyChooseUs = () => {
     {
       icon: Clock,
       title: "Fast Delivery",
-      description: "We value your time and deliver projects on schedule."
+      description: "We value your time. Our streamlined process ensures we deliver high-quality projects on schedule, every time.",
+      color: "blue",
+      colSpan: "lg:col-span-3"
     },
     {
       icon: DollarSign,
       title: "Affordable Pricing",
-      description: "Competitive rates without compromising quality."
+      description: "Get premium results without the premium price tag. We offer competitive rates tailored to your budget.",
+      color: "green",
+      colSpan: "lg:col-span-3"
     },
     {
       icon: Layout,
-      title: "Clean Modern Design",
-      description: "Aesthetics that impress and engage your visitors."
+      title: "Modern Design",
+      description: "Aesthetically pleasing interfaces that users love.",
+      color: "purple",
+      colSpan: "lg:col-span-2"
     },
     {
       icon: TrendingUp,
-      title: "Business-Focused Strategy",
-      description: "Solutions designed to grow your business and revenue."
+      title: "Scalable Solutions",
+      description: "Built to grow as your business expands.",
+      color: "indigo",
+      colSpan: "lg:col-span-2"
     },
     {
       icon: Headphones,
-      title: "Ongoing Support",
-      description: "We're here for you even after the launch."
+      title: "24/7 Support",
+      description: "We are always here to help you succeed.",
+      color: "pink",
+      colSpan: "lg:col-span-2"
     }
   ];
 
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white",
+      green: "bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 group-hover:bg-green-600 group-hover:text-white",
+      purple: "bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 group-hover:bg-purple-600 group-hover:text-white",
+      indigo: "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white",
+      pink: "bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-400 group-hover:bg-pink-600 group-hover:text-white",
+    };
+    return colors[color] || colors.blue;
+  };
+
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-        {/* Particles Background */}
-      <div className="absolute inset-0 z-0">
-        <Particles
-            particleColors={['#2563eb', '#7c3aed', '#94a3b8']}
-            particleCount={100}
-            particleSpread={10}
-            speed={0.1}
-            particleBaseSize={200}
-            moveParticlesOnHover={true}
-            alphaParticles={true}
-            disableRotation={false}
-        />
+    <section className="py-20 md:py-32 bg-gray-50 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300" id="why-choose-us">
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 dark:bg-blue-900/20 rounded-full mix-blend-multiply filter blur-[120px] opacity-30 animate-blob"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-100 dark:bg-purple-900/20 rounded-full mix-blend-multiply filter blur-[120px] opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-bold tracking-wider uppercase text-sm border border-blue-200">Why Us?</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 mt-4 tracking-tight text-gray-900 leading-tight">
-                Why leading brands choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">US</span>
-            </h2>
-            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-              We combine creativity with technical expertise to deliver digital solutions that stand out. Here is why businesses trust us.
-            </p>
-            <div className="space-y-8">
-              {reasons.map((reason, index) => {
-                const Icon = reason.icon;
-                return (
-                  <motion.div 
-                    key={index}
-                    className="flex items-start group p-4 rounded-2xl hover:bg-white/60 hover:shadow-lg hover:backdrop-blur-xl border border-transparent hover:border-white/40 transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <div className="bg-blue-100 border border-blue-200 p-4 rounded-xl mr-6 flex-shrink-0 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                      <Icon className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">{reason.title}</h3>
-                      <p className="text-gray-600">{reason.description}</p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
+        <div className="text-center mb-16 md:mb-24">
+          <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-600 dark:text-blue-400 font-semibold text-sm tracking-wide uppercase"
+            >
+                Why Choose Us
+            </motion.div>
           
-          <motion.div 
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight"
           >
-             <div className="absolute inset-0 bg-gradient-to-tr from-blue-200 to-green-200 blur-[100px] opacity-60 rounded-full"></div>
-             
-             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/40 z-10 group bg-white/30 backdrop-blur-sm p-2">
-                <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                    alt="Team working together" 
-                    className="w-full h-full object-cover rounded-[2rem] transform group-hover:scale-105 transition-transform duration-700"
-                />
-             </div>
-             
-             {/* Floating Badge */}
-             <motion.div 
-                className="absolute -bottom-10 -left-10 bg-white/80 backdrop-blur-xl border border-white/60 p-8 rounded-[2rem] shadow-2xl z-20 hidden md:block"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-             >
-                <div className="flex items-center gap-4">
-                    <div className="bg-green-100 p-4 rounded-full border border-green-200">
-                        <TrendingUp className="h-8 w-8 text-green-600" />
+            We Build for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Growth</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+          >
+            Our expertise goes beyond code. We partner with you to create digital solutions that drive real business results.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 auto-rows-[minmax(180px,auto)]">
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon;
+            return (
+              <motion.div
+                key={index}
+                className={`relative group ${reason.colSpan} bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl p-8 rounded-[2rem] border border-white/20 dark:border-gray-700/50 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col justify-between`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                {/* Decorative background gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-purple-50/50 dark:from-blue-900/10 dark:to-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div className="relative z-10">
+                    <div className={`mb-6 inline-flex p-4 rounded-2xl transition-colors duration-500 ${getColorClasses(reason.color)}`}>
+                        <Icon className="w-8 h-8" />
                     </div>
-                    <div>
-                        <p className="text-3xl font-bold text-gray-900">200%</p>
-                        <p className="text-gray-500 text-sm font-medium">Average ROI</p>
-                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {reason.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                        {reason.description}
+                    </p>
                 </div>
-             </motion.div>
-          </motion.div>
+                
+                {/* Subtle arrow that appears on hover */}
+                <div className="mt-8 relative z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 text-blue-600 dark:text-blue-400 font-semibold flex items-center">
+                    Learn more <ArrowRight className="w-4 h-4 ml-2" />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

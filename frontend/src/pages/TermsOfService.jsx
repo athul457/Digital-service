@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 
 const TermsOfService = () => {
   return (
-    <div className="pt-24 pb-16 bg-white min-h-screen mt-16">
+    <div className="pt-24 pb-16 bg-white dark:bg-gray-900 min-h-screen mt-16 transition-colors duration-300">
       <SEO 
         title="Terms of Service" 
         description="Read our terms and conditions for using our website and services." 
@@ -18,14 +18,14 @@ const TermsOfService = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
-            <p className="text-lg text-gray-600">Last updated: February 11, 2026</p>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Terms of Service</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Last updated: February 11, 2026</p>
           </div>
 
-          <div className="prose prose-lg max-w-none text-gray-600 space-y-8">
+          <div className="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-8">
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <FileText className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <FileText className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 1. Agreement to Terms
               </h2>
               <p>
@@ -34,8 +34,8 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <CheckSquare className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <CheckSquare className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 2. Use License
               </h2>
               <p>
@@ -51,8 +51,8 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <AlertCircle className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <AlertCircle className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 3. Disclaimer
               </h2>
               <p>
@@ -61,21 +61,21 @@ const TermsOfService = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Limitations</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Limitations</h2>
               <p>
                 In no event shall WebBloom or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on WebBloom's website, even if WebBloom or a WebBloom authorized representative has been notified orally or in writing of the possibility of such damage.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Accuracy of Materials</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Accuracy of Materials</h2>
               <p>
                 The materials appearing on WebBloom's website could include technical, typographical, or photographic errors. WebBloom does not warrant that any of the materials on its website are accurate, complete or current. WebBloom may make changes to the materials contained on its website at any time without notice.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Governing Law</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Governing Law</h2>
               <p>
                 These terms and conditions are governed by and construed in accordance with the laws of India and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
               </p>

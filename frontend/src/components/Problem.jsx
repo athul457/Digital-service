@@ -20,8 +20,8 @@ const Problem = () => {
     },
     {
       icon: TrendingDown,
-      title: "Zero Leads?",
-      description: "Traffic is useless if it doesn't turn into paying customers.",
+      title: "Not Receiving Enough Inquiries?",
+      description: "Clear structure and messaging make a difference.",
     }
   ];
 
@@ -45,8 +45,8 @@ const Problem = () => {
   };
 
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-[95%] mx-auto bg-blue-50/50 rounded-[3rem] py-24 relative overflow-hidden">
+    <section className="py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-[95%] mx-auto bg-blue-50/50 dark:bg-blue-900/10 rounded-[3rem] py-12 md:py-24 relative overflow-hidden transition-colors duration-300">
       {/* Background Elements - Subtle "Warning" Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
           <motion.div 
@@ -59,7 +59,7 @@ const Problem = () => {
                 repeat: Infinity,
                 ease: "easeInOut" 
             }}
-            className="absolute w-[] top-1/4 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-[120px]"
+            className="absolute w-[] top-1/4 left-1/4 w-96 h-96 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-[120px]"
           />
           <motion.div 
             animate={{ 
@@ -72,13 +72,13 @@ const Problem = () => {
                 ease: "easeInOut",
                 delay: 1 
             }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-200/20 rounded-full blur-[120px]" 
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-200/20 dark:bg-green-500/10 rounded-full blur-[120px]" 
           />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -87,15 +87,15 @@ const Problem = () => {
           <motion.div 
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-flex items-center justify-center p-2 bg-blue-100 text-blue-600 rounded-full mb-6 ring-4 ring-blue-50"
+            className="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-6 ring-4 ring-blue-50 dark:ring-blue-900/20"
           >
             <AlertTriangle className="w-6 h-6 mr-2" />
             <span className="font-bold uppercase tracking-wide text-sm">Growth Check</span>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
             Is your business <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600">ready to grow?</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Don't let these common issues hold back your success.
           </p>
         </motion.div>
@@ -120,10 +120,10 @@ const Problem = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="inline-flex flex-col items-center animate-bounce mb-6">
-            <ArrowDown className="h-8 w-8 text-green-600" />
+            <ArrowDown className="h-8 w-8 text-green-600 dark:text-green-400" />
           </div>
-          <h3 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
-            We <span className="text-green-600">fix all of it.</span>
+          <h3 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+            We <span className="text-green-600 dark:text-green-500">fix all of it.</span>
           </h3>
           <div className="mt-8 h-1 w-32 bg-gradient-to-r from-blue-500 to-green-600 mx-auto rounded-full"></div>
         </motion.div>
@@ -160,28 +160,28 @@ const ProblemCard = ({ item, variants }) => {
   return (
     <motion.div 
         variants={variants}
-        className="relative p-8 bg-white rounded-[2.5rem] border border-blue-50 shadow-xl shadow-blue-100/20 hover:shadow-2xl hover:shadow-blue-200/40 transition-all duration-300 group overflow-hidden"
+        className="relative p-6 md:p-8 bg-white dark:bg-gray-800 rounded-[2rem] md:rounded-[2.5rem] border border-blue-50 dark:border-gray-700 shadow-xl shadow-blue-100/20 dark:shadow-none hover:shadow-2xl hover:shadow-blue-200/40 dark:hover:shadow-blue-900/10 transition-all duration-300 group overflow-hidden"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
     >
         {/* Hover Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-green-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 dark:from-blue-900/20 to-green-50/50 dark:to-green-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         <div className="relative z-10 flex flex-col items-center text-center">
-            <div className="mb-6 relative [perspective:1000px]">
-                <div className="absolute inset-0 bg-blue-200 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+            <div className="mb-4 md:mb-6 relative [perspective:1000px]">
+                <div className="absolute inset-0 bg-blue-200 dark:bg-blue-800 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
                 <motion.div 
                   style={{ rotateX: rotateXSpring, rotateY: rotateYSpring }}
-                  className="relative p-5 bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl border border-blue-100 group-hover:border-blue-200"
+                  className="relative p-4 md:p-5 bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-700 dark:to-gray-700 rounded-2xl border border-blue-100 dark:border-gray-600 group-hover:border-blue-200 dark:group-hover:border-blue-500/50"
                 >
-                    <Icon className="h-10 w-10 text-blue-500 group-hover:text-green-600 transition-colors duration-300" />
+                    <Icon className="h-8 w-8 md:h-10 md:w-10 text-blue-500 dark:text-blue-400 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300" />
                 </motion.div>
             </div>
             
-            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 md:mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                 {item.title}
             </h3>
-            <p className="text-gray-500 leading-relaxed text-sm font-medium">
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-xs md:text-sm font-medium">
                 {item.description}
             </p>
         </div>

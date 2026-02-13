@@ -21,7 +21,7 @@ const Home = () => {
       <Services />
       <WhyChooseUs />
       <Portfolio />
-      <Blog />
+      {/* <Blog /> */}
       <Testimonials />
       <CTA />
     </main>

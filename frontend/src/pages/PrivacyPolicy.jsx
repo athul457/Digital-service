@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="pt-24 pb-16 bg-white min-h-screen mt-16" >
+    <div className="pt-24 pb-16 bg-white dark:bg-gray-900 min-h-screen mt-16 transition-colors duration-300">
       <SEO 
         title="Privacy Policy" 
         description="Our privacy commitment to you. Read how we collect, use, and protect your data." 
@@ -18,14 +18,14 @@ const PrivacyPolicy = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
-            <p className="text-lg text-gray-600">Last updated: February 11, 2026</p>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Privacy Policy</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Last updated: February 11, 2026</p>
           </div>
 
-          <div className="prose prose-lg max-w-none text-gray-600 space-y-8">
+          <div className="prose prose-lg max-w-none text-gray-600 dark:text-gray-300 space-y-8">
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Shield className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Shield className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 1. Introduction
               </h2>
               <p>
@@ -34,24 +34,24 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Eye className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Eye className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 2. Data We Collect
               </h2>
               <p>
                 We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows:
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-4">
-                <li><strong>Identity Data:</strong> includes first name, last name, username or similar identifier.</li>
-                <li><strong>Contact Data:</strong> includes email address and telephone numbers.</li>
-                <li><strong>Technical Data:</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform and other technology on the devices you use to access this website.</li>
-                <li><strong>Usage Data:</strong> includes information about how you use our website, products and services.</li>
+                <li><strong className="text-gray-900 dark:text-white">Identity Data:</strong> includes first name, last name, username or similar identifier.</li>
+                <li><strong className="text-gray-900 dark:text-white">Contact Data:</strong> includes email address and telephone numbers.</li>
+                <li><strong className="text-gray-900 dark:text-white">Technical Data:</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform and other technology on the devices you use to access this website.</li>
+                <li><strong className="text-gray-900 dark:text-white">Usage Data:</strong> includes information about how you use our website, products and services.</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                <Lock className="w-6 h-6 mr-2 text-blue-600" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <Lock className="w-6 h-6 mr-2 text-blue-600 dark:text-blue-400" />
                 3. How We Use Your Data
               </h2>
               <p>
@@ -65,23 +65,23 @@ const PrivacyPolicy = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Data Security</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">4. Data Security</h2>
               <p>
                 We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Your Legal Rights</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">5. Your Legal Rights</h2>
               <p>
                 Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to request access, correction, erasure, restriction, transfer, to object to processing, to portability of data and (where the lawful ground of processing is consent) to withdraw consent.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Contact Us</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">6. Contact Us</h2>
               <p>
-                If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:hello@webbloom.com" className="text-blue-600 hover:text-blue-800">hello@webbloom.com</a>
+                If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:hello@webbloom.com" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">hello@webbloom.com</a>
               </p>
             </section>
           </div>

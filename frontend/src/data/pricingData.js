@@ -1,37 +1,40 @@
 export const pricing = [
   {
-    title: "Basic",
-    price: "$299",
+    title: "Starter",
+    price: "$499",
     features: [
-      "5 Pages Website",
+      "Professional Website (5 Pages)",
       "Mobile Responsive Design",
-      "Contact Form Integration",
-      "Social Media Links",
-      "1 Month Support"
+      "Basic SEO Optimization",
+      "UI/UX Design Implementation",
+      "Contact Form & Social Integration",
+      "1 Month Free Support"
     ],
     recommended: false
   },
   {
-    title: "Standard",
-    price: "$599",
+    title: "Growth",
+    price: "$1499",
     features: [
-      "10 Pages Website",
-      "Admin Panel Access",
-      "SEO Optimization",
-      "Speed Optimization",
-      "3 Months Support"
+      "E-commerce / Web App (10+ Pages)",
+      "Mobile App Development (Android/iOS)",
+      "Digital Marketing Campaign Setup",
+      "Social Media Management (1 Month)",
+      "Advanced SEO & Analytics",
+      "3 Months Priority Support"
     ],
     recommended: true
   },
   {
-    title: "Premium",
-    price: "$999",
+    title: "Enterprise",
+    price: "Custom",
     features: [
-      "Unlimited Pages",
-      "Custom Features & Design",
-      "Payment Gateway Integration",
-      "Advanced SEO & Analytics",
-      "Full 6 Months Support"
+      "Custom ERP / CRM System",
+      "AI Automation Solutions",
+      "AI-Driven Marketing Strategy",
+      "3D Modeling & Product Visuals",
+      "Cloud Infrastructure Setup",
+      "Full API Integration & Support"
     ],
     recommended: false
   }
