@@ -14,11 +14,39 @@ const Contact = () => {
     setLoading(true);
     setStatus({ success: false, message: '' });
 
+    const formData = new FormData(form.current);
+    const formValues = Object.fromEntries(formData.entries());
+
+    if (!formValues.callback_time) {
+        setLoading(false);
+        setStatus({ success: false, message: 'Please select a preferred callback time.' });
+        return;
+    }
+
+    // Generate Google Calendar Link
+    const dateObj = new Date(formValues.callback_time);
+    const startTime = dateObj.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    const endTime = new Date(dateObj.getTime() + 30 * 60000).toISOString().replace(/-|:|\.\d\d\d/g, "");
+    
+    const subject = "BoolianLabs Callback Request";
+    const details = encodeURIComponent(`Name: ${formValues.user_name}\nPhone: ${formValues.user_phone}\nEmail: ${formValues.user_email}\n\nMessage: ${formValues.message}`);
+    const location = encodeURIComponent("Phone Call");
+    
+    const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(subject)}&dates=${startTime}/${endTime}&details=${details}&location=${location}`;
+
+    // Prepare data for EmailJS
+    const templateParams = {
+        ...formValues,
+        // callback_time is already in formValues
+        calendar_link: calendarLink,
+        subject: formValues.subject 
+    };
+
     emailjs
-      .sendForm(
+      .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
+        templateParams,
         {
           publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         }
@@ -105,6 +133,17 @@ const Contact = () => {
                     />
                     </div>
                     <div>
+                    <label htmlFor="callback_time" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Preferred Callback Time</label>
+                    <input 
+                        type="datetime-local" 
+                        name="callback_time"
+                        id="callback_time" 
+                        className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all shadow-sm [color-scheme:light] dark:[color-scheme:dark]"
+                    />
+                    </div>
+                </div>
+
+                <div className="mb-6">
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
                     <input 
                         type="text" 
@@ -114,7 +153,6 @@ const Contact = () => {
                         className="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all shadow-sm"
                         placeholder="Project Inquiry"
                     />
-                    </div>
                 </div>
 
                 <div className="mb-8">
@@ -138,9 +176,9 @@ const Contact = () => {
                 <button 
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gray-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-blue-600 to-green-500 text-white font-bold py-4 px-6 rounded-full transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:brightness-110 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed group"
                 >
-                    {loading ? 'Sending...' : 'Send Message'} <Send className={`ml-2 h-5 w-5 ${loading ? 'animate-pulse' : ''}`} />
+                    {loading ? 'Sending...' : 'Send Message'} <Send className={`ml-2 h-5 w-5 ${loading ? 'animate-pulse' : 'group-hover:translate-x-1 transition-transform'}`} />
                 </button>
                 </form>
             </div>
@@ -177,13 +215,13 @@ const Contact = () => {
                   </div>
                 </a>
 
-                <a href="mailto:hello@webagency.com" className="flex items-start group">
+                <a href="mailto:hello@boolianlabs.com" className="flex items-start group">
                   <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl mr-5 border border-blue-200 dark:border-blue-800 group-hover:bg-blue-600 transition-colors duration-300">
                     <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Email Address</h4>
-                    <p className="text-gray-600 dark:text-gray-300">hello@webagency.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">hello@boolianlabs.com</p>
                   </div>
                 </a>
 
@@ -199,9 +237,9 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/40 p-8 rounded-[2rem] shadow-xl">
-              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Business Hours</h3>
-              <ul className="space-y-3 text-gray-600 dark:text-gray-300">
+            {/* <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-md border border-white/40 dark:border-gray-700/40 p-8 rounded-[2rem] shadow-xl"> */}
+              {/* <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Business Hours</h3> */}
+              {/* <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                 <li className="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2">
                   <span>Monday - Friday</span>
                   <span className="font-medium text-gray-900 dark:text-white">9:00 AM - 6:00 PM</span>
@@ -214,8 +252,8 @@ const Contact = () => {
                   <span>Sunday</span>
                   <span className="text-red-500 font-medium">Closed</span>
                 </li>
-              </ul>
-            </div>
+              </ul> */}
+            {/* </div> */}
           </motion.div>
         </div>
       </div>
